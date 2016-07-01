@@ -167,51 +167,51 @@ userService.getCurrentUser().then(function(res){
             $scope.currentUser = "";
             $window.location.reload();
             $state.go('login');
-            
+
         });
     }
-    var posOptions = {timeout: 10000, enableHighAccuracy: false};
-    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-
-        var cord = {lat: position.coords.latitude,
-            long:position.coords.longitude
-          }
-
-        console.log(cord);
-        userService.editUserLoc(cord, $scope.currentUser._id).then(function(response) {
-            userService.getAllUsers().then(function(res) {
-                $scope.allUsers = res;
-            })
-        })
-      }, function(err) {
-        console.log(err);
-      });
-
-
-    var watchOptions = {
-      timeout : 3000,
-      enableHighAccuracy: false // may cause errors if true
-    };
-
-    var watch = $cordovaGeolocation.watchPosition(watchOptions);
-    watch.then(
-      null,
-      function(err) {
-        console.log(err);
-      },
-      function(position) {
-          var cord = {lat: position.coords.latitude,
-              long:position.coords.longitude
-          };
-
-          console.log(cord);
-          userService.editUserLoc(cord, $scope.currentUser._id).then(function(response) {
-              userService.getAllUsers().then(function(res) {
-                  $scope.allUsers = res;
-                  console.log($scope.allUsers)
-              })
-          })
-      })
+    // var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    // $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+    //
+    //     var cord = {lat: position.coords.latitude,
+    //         long:position.coords.longitude
+    //       }
+    //
+    //     console.log(cord);
+    //     userService.editUserLoc(cord, $scope.currentUser._id).then(function(response) {
+    //         userService.getAllUsers().then(function(res) {
+    //             $scope.allUsers = res;
+    //         })
+    //     })
+    //   }, function(err) {
+    //     console.log(err);
+    //   });
+    //
+    //
+    // var watchOptions = {
+    //   timeout : 3000,
+    //   enableHighAccuracy: false // may cause errors if true
+    // };
+    //
+    // var watch = $cordovaGeolocation.watchPosition(watchOptions);
+    // watch.then(
+    //   null,
+    //   function(err) {
+    //     console.log(err);
+    //   },
+    //   function(position) {
+    //       var cord = {lat: position.coords.latitude,
+    //           long:position.coords.longitude
+    //       };
+    //
+    //       console.log(cord);
+    //       userService.editUserLoc(cord, $scope.currentUser._id).then(function(response) {
+    //           userService.getAllUsers().then(function(res) {
+    //               $scope.allUsers = res;
+    //               console.log($scope.allUsers)
+    //           })
+    //       })
+    //   })
       $scope.isYoutubeArray= [];
       $scope.youtubeChecker = function(content, $index){
       //   console.log(content.indexOf("youtu"));
@@ -220,7 +220,7 @@ userService.getCurrentUser().then(function(res){
         }
       }
 
-    watch.clearWatch();
+    // watch.clearWatch();
     $scope.commentHiderArray = [];
     $scope.commentToggle = function ($index) {
       if ($scope.commentHiderArray[$index] !== true){
@@ -319,42 +319,42 @@ userService.getCurrentUser().then(function(res){
       });
     };
 
-    $scope.show = function() {
-
-       // Show the action sheet
-       var hideSheet = $ionicActionSheet.show({
-         buttons: [
-           { text: 5  + " miles"},
-           { text: 10  + " miles"},
-           { text: 15  + " miles"},
-           { text: 25  + " miles"},
-           { text: 50  + " miles"}
-         ],
-         titleText: 'Select Distance',
-         cancelText: 'Cancel',
-
-         buttonClicked: function(index) {
-             switch (index) {
-                 case 0: day = $scope.showDistance = 5;
-                     break;
-                 case 1: day = $scope.showDistance = 10;
-                     break;
-                 case 2: day = $scope.showDistance = 15;
-                     break;
-                 case 3: day = $scope.showDistance = 25;
-                     break;
-                 case 4: day = $scope.showDistance = 50;
-                     break;
-             }
-             hideSheet();
-             console.log($scope.showDistance);
-         }
-       });
-
-       // For example's sake, hide the sheet after two seconds
-
-
-     };
+    // $scope.show = function() {
+    //
+    //    // Show the action sheet
+    //    var hideSheet = $ionicActionSheet.show({
+    //      buttons: [
+    //        { text: 5  + " miles"},
+    //        { text: 10  + " miles"},
+    //        { text: 15  + " miles"},
+    //        { text: 25  + " miles"},
+    //        { text: 50  + " miles"}
+    //      ],
+    //      titleText: 'Select Distance',
+    //      cancelText: 'Cancel',
+    //
+    //      buttonClicked: function(index) {
+    //          switch (index) {
+    //              case 0: day = $scope.showDistance = 5;
+    //                  break;
+    //              case 1: day = $scope.showDistance = 10;
+    //                  break;
+    //              case 2: day = $scope.showDistance = 15;
+    //                  break;
+    //              case 3: day = $scope.showDistance = 25;
+    //                  break;
+    //              case 4: day = $scope.showDistance = 50;
+    //                  break;
+    //          }
+    //          hideSheet();
+    //          console.log($scope.showDistance);
+    //      }
+    //    });
+    //
+    //    // For example's sake, hide the sheet after two seconds
+    //
+    //
+    //  };
 
 
 })
