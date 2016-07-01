@@ -1,16 +1,17 @@
 <ion-content>
 
          <div class="postContent">
-             <button ng-click='show()'>Distance</button>
-           <div class="list" id="contentBox" ng-if='post.distance <= showDistance'ng-repeat="post in allPosts | orderBy:'createdAt':true  track by post._id">
+             <!-- <button ng-click='show()'>Distance</button> -->
+             <!-- ng-if='post.distance <= showDistance' -->
+           <div class="list" id="contentBox"   ng-repeat="post in allPosts | orderBy:'createdAt':true  track by post._id">
              <div id="border-bottom" class="item item-avatar">
                <img ng-src="{{post.user.profpic}}">
                <div class = "postUserName"><a ui-sref="user-profile({id: post.user._id})">{{post.user.username}}</a>
-                 <div class="distanceText">
+                 <!-- <div class="distanceText">
                    <ng-pluralize count='post.distance' when="{'1':'1 Mile Away',
                                      'other':'{} Miles Away '}">
                             </ng-pluralize>
-                 </div>
+                 </div> -->
                  <!-- <div class="dateText">Posted on {{post.createdAt | date : medium}}</div> -->
                </div>
                <!-- <button class="button button-small button-positive"ng-click="createChat(post.user._id, currentUser._id)">
