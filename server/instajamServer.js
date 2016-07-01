@@ -28,7 +28,7 @@ app.use(express.static('../www'));
 //SOCKET.IO/
 ///////////
 io.on('connection', function(socket) {
- console.log("Sockets listining on backend");
+ console.log("Sockets listening on backend");
  socket.on('ctrl message', function(msg) {
    io.emit("message from socket", msg);
    console.log("surfs up!");
